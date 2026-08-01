@@ -3,165 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord Member Counter</title>
+  <title>Discord Community</title>
   <style>
-    /* Reset & Page Setup */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       background-color: #1e1f22;
-      color: #f2f3f5;
-      font-family: 'gg sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 20px;
+      margin: 0;
     }
 
-    /* Discord Card Container */
-    .discord-widget {
+    .discord-card {
       background-color: #2b2d31;
       border: 1px solid #383a40;
-      border-radius: 16px;
-      width: 100%;
-      max-width: 320px;
+      border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      width: 280px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     }
 
-    /* Card Header */
-    .widget-header {
+    .card-title {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #3f4147;
-    }
-
-    .widget-header svg {
-      width: 28px;
-      height: 28px;
-      fill: #5865f2;
-    }
-
-    .widget-header h3 {
+      gap: 10px;
       font-size: 16px;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    /* Stats Section */
-    .stats-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #3f4147;
     }
 
     .stat-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      margin-bottom: 10px;
       font-size: 14px;
       color: #b5bac1;
     }
 
-    .stat-label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .stat-value {
+      color: #ffffff;
+      font-weight: bold;
     }
 
     .online-dot {
-      width: 10px;
-      height: 10px;
+      height: 8px;
+      width: 8px;
       background-color: #23a55a;
       border-radius: 50%;
       display: inline-block;
-    }
-
-    .stat-value {
-      font-size: 16px;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    /* Join Button */
-    .join-btn {
-      display: block;
-      width: 100%;
-      background-color: #5865f2;
-      color: #ffffff;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 10px 0;
-      border-radius: 8px;
-      transition: background-color 0.2s ease;
-    }
-
-    .join-btn:hover {
-      background-color: #4752c4;
+      margin-right: 6px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Discord Widget Component -->
-  <div class="discord-widget">
-    <div class="widget-header">
-      <svg viewBox="0 0 127.14 96.36">
+  <div class="discord-card">
+    <div class="card-title">
+      <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="#5865F2">
         <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a74.57,74.57,0,0,0,64.3,0c.87.69,1.76,1.37,2.66,2a68.16,68.16,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-21.13-72.13ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.91,53.87,53,48.8,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.08-12.74,11.44-12.74S96.23,45.91,96.1,53,91.08,65.69,84.69,65.69Z"/>
       </svg>
-      <h3>Discord Community</h3>
+      Discord Server
     </div>
 
-    <div class="stats-container">
-      <div class="stat-row">
-        <span class="stat-label">Total Members</span>
-        <span id="discord-total" class="stat-value">Loading...</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-label"><span class="online-indicator online-dot"></span>Online</span>
-        <span id="discord-online" class="stat-value">--</span>
-      </div>
+    <div class="stat-row">
+      <span>Total Members</span>
+      <span id="discord-total" class="stat-value">Loading...</span>
     </div>
 
-    <!-- Optional: Replace # with your server invite link -->
-    <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="join-btn">Join Server</a>
+    <div class="stat-row">
+      <span><span class="online-dot"></span>Online</span>
+      <span id="discord-online" class="stat-value">--</span>
+    </div>
   </div>
 
-  <!-- JavaScript to Fetch discord.json -->
   <script>
-    async function loadDiscordData() {
+    async function updateStats() {
       try {
-        // Append Date.now() to prevent GitHub Pages / browser caching
-        const response = await fetch('./discord.json?v=' + Date.now());
+        // Adding ?v= prevents browser caching
+        const res = await fetch('./discord.json?v=' + Date.now());
         
-        if (!response.ok) {
-          throw new Error('discord.json file not found yet.');
+        if (!res.ok) {
+          throw new Error('discord.json not found');
         }
 
-        const data = await response.json();
+        const data = await res.json();
 
-        // Format numbers with commas (e.g., 1,250)
+        // Inject data into HTML
         document.getElementById('discord-total').textContent = Number(data.total_members).toLocaleString();
         document.getElementById('discord-online').textContent = Number(data.online_members).toLocaleString();
-      } catch (error) {
-        console.warn('Could not load stats:', error.message);
+      } catch (err) {
+        console.error('Error fetching discord.json:', err);
         document.getElementById('discord-total').textContent = 'Offline';
       }
     }
 
-    // Load data immediately on page load
-    loadDiscordData();
+    // Run when page opens
+    updateStats();
   </script>
 
 </body>
